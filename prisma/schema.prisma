@@ -30,3 +30,42 @@ model Session {
   collaborator  Boolean?  @default(false)
   emailVerified Boolean?  @default(false)
 }
+
+
+model CartRule {
+  id                    String    @id @default(cuid())
+  shop                 String
+  name                 String
+  isActive             Boolean   @default(true)
+  minCartValue         Float
+  maxCartValue         Float?
+  hasUpperLimit        Boolean   @default(false)
+  
+
+  actionType           String    
+  productIds           String    
+  
+
+  worksInReverse       Boolean   @default(false)
+  allowMultipleTriggers Boolean  @default(false)
+  executeOncePerSession Boolean  @default(false)
+  preventQuantityChanges Boolean @default(false)
+  
+  createdAt            DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
+  
+  @@index([shop])
+}
+
+model RuleExecution {
+  id        String   @id @default(cuid())
+  ruleId    String
+  shop      String
+  sessionId String?
+  cartId    String?
+  executed  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  
+  @@index([shop, sessionId])
+  @@index([shop, cartId])
+}
