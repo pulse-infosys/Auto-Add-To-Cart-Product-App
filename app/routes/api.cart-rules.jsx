@@ -12,7 +12,7 @@ export async function loader({ request }) {
 
   const rules = await prisma.cartRule.findMany({
     where: { 
-      shop: `${shop}.myshopify.com`,
+      shop: shop,
       isActive: true 
     }
   });

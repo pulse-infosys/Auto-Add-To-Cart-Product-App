@@ -2,12 +2,11 @@
 
 client_id = "e3aaf118a7f9654eda65e0acf62140b4"
 name = "Auto Add to Cart\r"
-application_url = "https://example.com"
+application_url = "https://autoadd-to-cart.onrender.com"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
-include_config_on_deploy = true
 
 [webhooks]
 api_version = "2025-10"
@@ -25,4 +24,4 @@ api_version = "2025-10"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [ "https://autoadd-to-cart.onrender.com/api/auth" ]
